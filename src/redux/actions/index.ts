@@ -31,6 +31,13 @@ export interface SetSpinnerAction {
     readonly visible: boolean,
 }
 
+export interface SetNameAction {
+    readonly type: "SET_NAME", 
+    readonly name: string,
+}
+
+//NEWTHINGS 6. Add setNameAction to Action
+
 export type Action =
 |   ReceiveAccessTokenAction
 |   ReceiveErrorAction
@@ -39,6 +46,7 @@ export type Action =
 |   BootstrapAction
 |   ClearErrorAction
 |   SetSpinnerAction
+|   SetNameAction
 
 // session
 export const login = (username: string, password: string): Action => ({
@@ -78,4 +86,12 @@ export const receiveError = (errorText: string) => ({
 
 export const clearError = () => ({
     type: "CLEAR_ERROR",
+})
+
+//NEWTHINGS 5. Add setName action creator
+
+// set name 
+export const setName = (name: string) =>({
+    type: 'SET_NAME',
+    name
 })

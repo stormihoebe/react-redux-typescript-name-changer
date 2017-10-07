@@ -11,6 +11,8 @@ const actions = {
        loggedIn: false,
        accessToken: "",
     },
+    setName: () => ({}),
+    name: {name:""}
 }
 
 const render = () => (
@@ -19,6 +21,8 @@ const render = () => (
         logout={actions.logout}
         bootstrap={actions.bootstrap}
         session={actions.session}
+        setName={actions.setName}
+        name={actions.name}
     />
 )
 

@@ -24,13 +24,15 @@ export interface Error {
 }
 
 /////////////////////////////////////////
-
+//NEWTHINGS 1. Add name to AppState interface
 export interface AppState {
     readonly session: Session,
     readonly error: Error,
     readonly spinner: boolean,
+    readonly name: {name: string}
 }
 
+//NEWTHINGS 2. Add name to default state
 const defaultAppState: AppState = {
     session: {
         accessToken: "",
@@ -40,6 +42,7 @@ const defaultAppState: AppState = {
         text: "",
     },
     spinner: false,
+    name: {name: "Stormi"}
 }
 
 export const INITIAL_STATE: AppState = defaultAppState
@@ -53,6 +56,7 @@ export const setSession = (state: Session, accessToken: string): Session => {
     })
 }
 
+
 export const removeSession = (state: Session): Session => {
     deleteAccessToken()
     return ({
@@ -61,8 +65,10 @@ export const removeSession = (state: Session): Session => {
     })
 }
 
+
 // error
 
 export const setError = (state: Error, errorText: string): Error => ({
     text: errorText,
 })
+
