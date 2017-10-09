@@ -7,36 +7,36 @@ import { connect } from "react-redux"
 import { AppState, Session } from "../../redux/core"
 import { setPageTitle } from "../../util/page_utils"
 import * as actions from "../../redux/actions"
-//NEWTHINGS 12. Import Parent
-import Parent from '../../components/name_changer/parent'
+// NEWTHINGS 12. Import Parent
+import Parent from "../../components/name_changer/parent"
 
 const styles = require("./dashboard.module.css")
 
-//NEWTHINGS 7. Add name to reduxState interface
+// NEWTHINGS 7. Add name to reduxState interface
 interface ReduxState {
     readonly session: Session,
-    readonly name: {name: string}
+    readonly name: {readonly name: string}
 }
 
-//NEWTHINGS 8. Add setName to Redux actions
+// NEWTHINGS 8. Add setName to Redux actions
 interface ReduxActions {
     readonly logout: () => void
     readonly bootstrap: () => void
     readonly setName: (name: string) => void
 }
 
-//NEWTHINGS 9. Add name to dashboard props
+// NEWTHINGS 9. Add name to dashboard props
 interface DashboardProps extends RouteComponentProps<{}> {
-    readonly name: {name: string}
+    readonly name: {readonly name: string}
 }
 
-//NEWTHINGS 10. Add name to map state to pros
+// NEWTHINGS 10. Add name to map state to pros
 const mapStateToProps = (state: AppState, ownProps: DashboardProps): ReduxState => ({
     session: state.session,
-    name: state.name
+    name: state.name,
 })
 
-//NEWTHINGS 11. Add setName to mapDispatch
+// NEWTHINGS 11. Add setName to mapDispatch
 const mapDispatchToProps = (dispatch: redux.Dispatch<AppState>): ReduxActions => ({
     logout: () => dispatch( actions.logout() ),
     bootstrap: () => dispatch( actions.bootstrap() ),
@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<AppState>): ReduxActions =>
 interface DashboardState {
 }
 
-//NEWTHINGS 13. Add Parent to Dashboard render, pass it name and SetName
+// NEWTHINGS 13. Add Parent to Dashboard render, pass it name and SetName
 export class Dashboard extends React.Component<ReduxState & ReduxActions & DashboardProps, DashboardState> {
     constructor(props: ReduxState & ReduxActions & DashboardProps) {
         super(props)

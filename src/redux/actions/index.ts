@@ -30,14 +30,13 @@ export interface SetSpinnerAction {
     readonly type: "SET_SPINNER",
     readonly visible: boolean,
 }
-
+// NEWTHINGS   5.5 Add SetNameAction interface
 export interface SetNameAction {
     readonly type: "SET_NAME", 
     readonly name: string,
 }
 
-//NEWTHINGS 6. Add setNameAction to Action
-
+// NEWTHINGS 6. Add setNameAction to Action
 export type Action =
 |   ReceiveAccessTokenAction
 |   ReceiveErrorAction
@@ -88,10 +87,8 @@ export const clearError = () => ({
     type: "CLEAR_ERROR",
 })
 
-//NEWTHINGS 5. Add setName action creator
-
-// set name 
-export const setName = (name: string) =>({
-    type: 'SET_NAME',
-    name
+// NEWTHINGS 5. Add setName action creator
+export const setName = (name: string) => ({
+    type: "SET_NAME",
+    name,
 })
