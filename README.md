@@ -2,7 +2,7 @@
 This application uses the [react-redux-typescript-seed](https://github.com/olioapps/react-redux-typescript-seed) as a starting off point and implements [the react-name-changer](https://github.com/olioapps/onboarding/tree/master/react-name-changer). I have documented inline the steps needed to add new stateful components to the seed. You can also follow along with the tutorial below to learn how to go from the seed to the name changer application and begin to feel comfortable working with the seed to create applications. 
 
 ###  Running Name Changer Application
-- clone repo `git clone react-redux-typescript-name-changer`
+- clone repo `git clone https://github.com/stormihoebe/react-redux-typescript-name-changer`
 - open cloned repo `cd react-redux-typescript-name-changer`
 - install `yarn install`
 - start `yarn start`
@@ -20,7 +20,31 @@ This tutorial will describe step by step how to go from the react-redux-typescri
 - start `yarn start`
 - open [localhost:3000](http://localhost:3000/)
 
-#### Starting react-redux-typescript-seed
+#### Adding new elements to app state
+- In a code editor (like Visual Studio Code) open `react-redux-typescript-seed/src/redux/core.ts`
+- Add name to AppState interface
+```sh
+export interface AppState {
+    readonly session: Session,
+    readonly error: Error,
+    readonly spinner: boolean,
+    readonly name: { readonly name: string } // this is the new stuff, elements of appState must be readonly
+}
+```
+- Refactor defaultAppState to include name 
+```sh
+const defaultAppState: AppState = {
+    session: {
+        accessToken: "",
+        loggedIn: false,
+    },
+    error: {
+        text: "",
+    },
+    spinner: false,
+    name: {name: "Stormi"}, // this is the new stuff
+}
+``` 
 
 
 #### Helpful links if you're new to TypeScript, Redux, or React Router v4
