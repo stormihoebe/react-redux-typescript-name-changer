@@ -45,6 +45,30 @@ const defaultAppState: AppState = {
     name: {name: "Stormi"}, // this is the new stuff
 }
 ``` 
+#### Create setName reducer
+- create a new file in ../src/redux/reducers named `setName_reducer.ts`
+- open `setName_reducer.ts`
+- create setName reducer and export it 
+```sh
+import { Action } from "../actions"
+
+const nameChangerApp = (
+    state = {
+        name: "Stormi",
+    }, 
+    action: Action) => {
+        // debugger
+    switch (action.type) {
+        case "SET_NAME":
+            return { ...state,
+                name: action.name,
+            }
+        default:
+            return state
+    }
+}
+export default nameChangerApp
+```
 
 
 #### Helpful links if you're new to TypeScript, Redux, or React Router v4
