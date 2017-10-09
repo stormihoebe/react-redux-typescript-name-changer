@@ -69,6 +69,19 @@ const nameChangerApp = (
 }
 export default nameChangerApp
 ```
+#### Add setName to rootReducer 
+- Open file  `../src/redux/reducers/root_reducer.ts`
+- import setName at the top of the page `import setName from "./setName_reducer"`
+- refactor rootReducer to include name
+```sh
+const rootReducer = combineReducers({
+    session,
+    error,
+    spinner,
+    name: setName, // this is new
+})
+``` 
+
 
 
 #### Helpful links if you're new to TypeScript, Redux, or React Router v4
