@@ -1,10 +1,27 @@
 # Name Changer Application 
-This application uses the [react-redux-typescript-seed](https://github.com/olioapps/react-redux-typescript-seed) as a starting off point and implements [the react-name-changer](https://github.com/olioapps/onboarding/tree/master/react-name-changer). I have documented inline the steps needed to add new stateful components to the seed.  
+This application uses the [react-redux-typescript-seed](https://github.com/olioapps/react-redux-typescript-seed) as a starting off point and implements [the react-name-changer](https://github.com/olioapps/onboarding/tree/master/react-name-changer). I have documented inline the steps needed to add new stateful components to the seed. You can also follow along with the tutorial below to learn how to go from the seed to the name changer application and begin to feel comfortable working with the seed to create applications. 
 
-# react-redux-typescript-seed
-A jumping off point for building a frontend application
+###  Running Name Changer Application
+- clone repo `git clone react-redux-typescript-name-changer`
+- open cloned repo `cd react-redux-typescript-name-changer`
+- install `yarn install`
+- start `yarn start`
+- open [localhost:3000](http://localhost:3000/)
+- login with dummy creds
+- view name changer form on localhost:3000/dashboard
 
-### Getting started
+## Tutorial: Recreating Name Changer Application Step by Step
+This tutorial will describe step by step how to go from the react-redux-typescript-seed to the name changer app.
+
+#### Starting react-redux-typescript-seed
+- clone react-redux-typescript-seed `git clone https://github.com/olioapps/react-redux-typescript-seed`
+- open cloned repo `cd react-redux-typescript-seed`
+- install `yarn install`
+- start `yarn start`
+- open [localhost:3000](http://localhost:3000/)
+
+#### Starting react-redux-typescript-seed
+
 
 #### Helpful links if you're new to TypeScript, Redux, or React Router v4
 - [TypeScript](https://github.com/Microsoft/TypeScript-React-Starter#creating-a-component)
@@ -12,11 +29,7 @@ A jumping off point for building a frontend application
 - [react-redux-typescript-guide](https://github.com/piotrwitek/react-redux-typescript-guide#react)
 - [React Router](https://reacttraining.com/react-router/web/guides/philosophy)
 
-#### Get project running
-- cd into cloned repo
-- yarn install
-- yarn start
-- garbage creds will log you in
+
 
 #### Get login working with your backend
 - on line 30 of client.ts replace "url here" with your root url
