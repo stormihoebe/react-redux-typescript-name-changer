@@ -109,7 +109,62 @@ export type Action =
 |   SetSpinnerAction
 |   SetNameAction // this is new
 ```
+#### Refactoring dashboard page
 
+- Open file  `../src/pages/dashboard/dashboard.tsx`
+- Add name to ReduxState interface 
+```sh
+interface ReduxState {
+    readonly session: Session,
+    readonly name: {readonly name: string} // this is new
+}
+```
+- Add setName to ReduxActions
+```sh
+interface ReduxActions {
+    readonly logout: () => void
+    readonly bootstrap: () => void
+    readonly setName: (name: string) => void // this is new
+}
+```
+- Add name to dashboard props
+```sh
+interface DashboardProps extends RouteComponentProps<{}> {
+    readonly name: {readonly name: string} // this is new
+}
+```
+- Add name and setName to mapStatetoProps and mapDispatchToProps respectively 
+```sh
+
+// Add name to map state to pros
+const mapStateToProps = (state: AppState, ownProps: DashboardProps): ReduxState => ({
+    session: state.session,
+    name: state.name, // this is new
+})
+
+// Add setName to mapDispatch
+const mapDispatchToProps = (dispatch: redux.Dispatch<AppState>): ReduxActions => ({
+    logout: () => dispatch( actions.logout() ),
+    bootstrap: () => dispatch( actions.bootstrap() ),
+    setName: (name: string) => dispatch(actions.setName(name)), // this is new
+})
+
+```
+- Refactor Dashboard component render to show the Parent Component 
+```sh 
+render(): JSX.Element {
+        
+        return (
+            <div className={styles.dashboard}>
+                <Parent name={this.props.name.name} setName={this.props.setName}/>
+            </div>
+        )
+    }
+```
+- Import Parent (You will create Parent in the next step)
+```sh
+import Parent from "../../components/name_changer/parent"
+```
 
 #### Helpful links if you're new to TypeScript, Redux, or React Router v4
 - [TypeScript](https://github.com/Microsoft/TypeScript-React-Starter#creating-a-component)
