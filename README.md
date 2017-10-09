@@ -165,6 +165,140 @@ render(): JSX.Element {
 ```sh
 import Parent from "../../components/name_changer/parent"
 ```
+#### Refactor dashboard.test to include name and setName 
+- Open file  `../src/pages/dashboard/dashboard.test.tsx`
+- Add setName and name to test actions 
+```sh
+const actions = {
+    logout: () => ({}),
+    bootstrap: () => ({}),
+    session: {
+       loggedIn: false,
+       accessToken: "",
+    },
+    setName: () => ({}), // this is new
+    name: {name:""} // this is new
+}
+```
+- Add setName and name to render test
+```sh
+const render = () => (
+    <Dashboard
+        {...genericRouteProps}
+        logout={actions.logout}
+        bootstrap={actions.bootstrap}
+        session={actions.session}
+        setName={actions.setName} // this is new
+        name={actions.name} // this is new
+    />
+)
+```
+
+#### Creating component files
+(Note: Each component should have it's own directory that includes a .css, .scss, and .tsx file. We are are simplifying this step by putting both items in a name_changer components directory and skipping over the styling files)
+- Create directory `..src/components/name_changer`
+- Create file `..src/components/name_changer/parent.tsx`
+- Create file `..src/components/name_changer/child.tsx`
+
+#### The Parent Component 
+- add the following code the the new `../name_changer/parent.tsx`
+```sh
+import * as React from "react"
+import Child from "./child"
+
+interface ParentProps {
+    readonly name: string
+    readonly setName: (name: string) => void 
+}
+
+interface ParentState {
+    readonly name: string
+}
+
+class Parent extends React.Component<ParentProps, ParentState> {
+    render(): JSX.Element {
+        const {name} = this.props
+        return ( 
+        <div>
+            <h1>{name}</h1>
+            <Child 
+                name={name}
+                setName={this.props.setName}
+            />
+        </div>
+        )
+    }
+}
+
+export default Parent
+```
+#### The Stateful Child Component 
+- add the following code the the new `../name_changer/child.tsx`
+```sh
+import * as React from "react"
+
+interface ChildProps {
+    readonly name: string
+    readonly setName: (name: string) => void 
+}
+
+interface ChildState {
+    readonly name: string
+}
+
+interface InputEvent {
+    readonly target: {
+        readonly name: string,
+        readonly value: string,
+    }
+}
+
+export class Child extends React.Component<ChildProps, ChildState> {
+    constructor(props: ChildProps) {
+        super(props)
+        // set initial state of name to empty string
+        this.state = { name: props.name}
+        // bind the this context for child component functions
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    // upudate local state with each change of input
+    handleChange(event: InputEvent): void {
+        this.setState({name: event.target.value})
+    }
+
+    // When form is submitted, dispatch action creator to set app state name to local/component state name
+    // Then set the local state to an empty string to clear the input field. 
+    handleSubmit = () => {
+        this.props.setName(this.state.name)
+        this.setState({name: ""})     
+    }
+
+    render(): JSX.Element {
+        
+        return (
+            <div>
+                <label>
+                    Name:
+                <input 
+                    type="text" 
+                    value={this.state.name} 
+                    onChange={this.handleChange} />
+                </label>
+                <button value="Submit" 
+                    onClick={this.handleSubmit}>
+                    Submit
+                </button>
+            </div>
+        )
+    }
+}
+
+export default Child
+
+```
+
 
 #### Helpful links if you're new to TypeScript, Redux, or React Router v4
 - [TypeScript](https://github.com/Microsoft/TypeScript-React-Starter#creating-a-component)
