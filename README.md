@@ -1,3 +1,6 @@
+# Name Changer Application 
+This application uses the [react-redux-typescript-seed](https://github.com/olioapps/react-redux-typescript-seed) as a starting off point and implements [the react-name-changer](https://github.com/olioapps/onboarding/tree/master/react-name-changer). I have documented inline the steps needed to add new stateful components to the seed.  
+
 # react-redux-typescript-seed
 A jumping off point for building a frontend application
 

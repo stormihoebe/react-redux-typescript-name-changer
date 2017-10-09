@@ -4,6 +4,7 @@ import { Dashboard } from "./dashboard"
 import { create as renderer } from "react-test-renderer"
 import { genericRouteProps } from "../../util/page_utils"
 
+//NEWTHINGS 13.5. Add SetName and name to test actions
 const actions = {
     logout: () => ({}),
     bootstrap: () => ({}),
@@ -15,6 +16,7 @@ const actions = {
     name: {name:""}
 }
 
+//NEWTHINGS 13.6. Add setName and name to render test
 const render = () => (
     <Dashboard
         {...genericRouteProps}
