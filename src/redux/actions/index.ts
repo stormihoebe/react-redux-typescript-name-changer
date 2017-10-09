@@ -45,7 +45,7 @@ export type Action =
 |   BootstrapAction
 |   ClearErrorAction
 |   SetSpinnerAction
-|   SetNameAction
+|   SetNameAction 
 
 // session
 export const login = (username: string, password: string): Action => ({

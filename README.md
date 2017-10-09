@@ -81,7 +81,34 @@ const rootReducer = combineReducers({
     name: setName, // this is new
 })
 ``` 
-
+#### Refactoring actions to include setName
+- Open file  `../src/redux/actions/index.ts`
+- To the bottom of the file, add Set name action creator 
+```sh
+export const setName = (name: string) => ({
+    type: "SET_NAME",
+    name,
+})
+```
+- create a SetNameAction interface 
+```sh
+export interface SetNameAction {
+    readonly type: "SET_NAME", 
+    readonly name: string,
+}
+```
+- add setNameAction to Action type 
+```sh
+export type Action =
+|   ReceiveAccessTokenAction
+|   ReceiveErrorAction
+|   LoginAction
+|   LogoutAction
+|   BootstrapAction
+|   ClearErrorAction
+|   SetSpinnerAction
+|   SetNameAction // this is new
+```
 
 
 #### Helpful links if you're new to TypeScript, Redux, or React Router v4
