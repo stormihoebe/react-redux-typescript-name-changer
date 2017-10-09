@@ -8,7 +8,6 @@ import { AppState, Session } from "../../redux/core"
 import { setPageTitle } from "../../util/page_utils"
 import * as actions from "../../redux/actions"
 //NEWTHINGS 12. Import Parent
-
 import Parent from '../../components/name_changer/parent'
 
 const styles = require("./dashboard.module.css")
@@ -27,12 +26,11 @@ interface ReduxActions {
 }
 
 //NEWTHINGS 9. Add name to dashboard props
-
 interface DashboardProps extends RouteComponentProps<{}> {
     readonly name: {name: string}
 }
-//NEWTHINGS 10. Add name to map state to pros
 
+//NEWTHINGS 10. Add name to map state to pros
 const mapStateToProps = (state: AppState, ownProps: DashboardProps): ReduxState => ({
     session: state.session,
     name: state.name
@@ -47,7 +45,8 @@ const mapDispatchToProps = (dispatch: redux.Dispatch<AppState>): ReduxActions =>
 
 interface DashboardState {
 }
-//NEWTHINGS 13. Add Parent to Dashboard render
+
+//NEWTHINGS 13. Add Parent to Dashboard render, pass it name and SetName
 export class Dashboard extends React.Component<ReduxState & ReduxActions & DashboardProps, DashboardState> {
     constructor(props: ReduxState & ReduxActions & DashboardProps) {
         super(props)
